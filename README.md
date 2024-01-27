@@ -1,5 +1,4 @@
 # **CREDIT CARD FRAUD TRANSACTION DETECTION**
----
 
 ## **INTRODUCTION**
 **1.   Background**
@@ -23,12 +22,12 @@
 
 ## **METHODOLOGY** 
 
-> Credit card fraud detection necessitates the use of an ML-based algorithm to accomplish feature extraction and model evaluation. In this project, three machine learning techniques: Random Forest, Logistic Regression, and XGBoost are compared and analysed by utilizing the dataset from Kaggle that contains transactions made by credit cards September 2013 by European cardholders to create a fraud transaction detection system.
+> Credit card fraud detection necessitates the use of an ML-based algorithm to accomplish feature extraction and model evaluation. In this project, three machine learning techniques: Random Forest, Logistic Regression, and XGBoost and one deep learning algorithm: Multi-Layer Perceptron are compared and analysed by utilizing the dataset from Kaggle that contains transactions made by credit cards September 2013 by European cardholders to create a fraud transaction detection system.
 
 
 Following is the methodology employed by this project:
 
-methodology.png
+![Methodology](Images/Methodology.png)
 
 ### **`1. EXPLORATORY DATA ANALYSIS`**
 
@@ -46,40 +45,34 @@ methodology.png
 
 > Several Python functions, namely head, describe, and info, were used to analyze the data's features and learn more about the structure and contents.
 
-Description of Data.png
+![Description of Data](Images/Description%20of%20Data.png)
 
-Initial Data.png
+![Initial Data](Images/Initial%20Data.png)
 
-Class Distribution.png
+![Class Distribution](Images/Class%20Distribution.png)
 
-Distribution of Column Amount.png
+![Distribution of Column 'Amount'](Images/Distribution%20of%20Column%20Amount.png)
 
-Distribution across V1.png
+![Distribution across V1.png](Images/Distribution%20across%20V1.png)
 
-Correlation with Class column.png
+![Correlation with Class column](Images/Correlation%20with%20Class%20column.png)
 
-Distribution of column 'Time'.png
+![Distribution of column 'Time'](Images/Distribution%20of%20column%20'Time'.png)
 
-Skewness Disribution.png
+![Skewness Disribution](Images/Skewness%20Disribution.png)
 
 
 ### **`2. DATA OBSERVATIONS`**
 
 *   The data includes 8 Rows and 31 Columns.
-
 *   The Columns Names from V1 to V28 are hidden as it contains people's confidential transactional information. Hence, they are already converted to PCA Vectors.
-*   We have Time and Amount column, and the Class column is the target column and represents if the transaction is a fraud or not. '0' means it's not a fraud and '1' means it's a fraud. On further analysis, we can see that the number of frauds (492) in the data are much less than the legit transactions (284315). This indicates the data is highly unbalanced and might require under sampling or oversampling.
+*   We have Time and Amount column, and the Class column is the target column and represents if the transaction is a fraud or not. '0' means it's not a fraud and '1' means it's a fraud. On further analysis, we can see that the number of frauds (492) in the data are much less than the legit transactions (284315). This indicates the data is highly imbalanced and might require under sampling or oversampling.
 *   The data does not have any null values in any of the columns.
 *   From the histograms, we can observe that the data has maximum transactional amounts below 100 with a mean of 88. The values of PCA vector V1 are maximum between -5 to 5.
 *   Further, I have also checked the skewness across each column by plotting its distribution across histogram and have fixed it using a Power Transformer 
 
 
-
-
-
 ### **`3. FEATURE ENGINEERING`**
-
-
 
 *   Feature engineering is a crucial step in the data preprocessing pipeline, as it involves creating new features or transforming existing ones to capture relevant information and patterns within the data. 
 *   I introduced a new feature named 'Amount_Relative' to better represent the transaction amount's significance relative to the class of transactions (fraudulent or legitimate). 
@@ -102,7 +95,7 @@ Overcoming the problem of an imbalanced dataset by using sampling techniques
 
 >  After the oversampling and under sampling processes, this bar chart gives a clear visual representation of the achieved balance between the two classes.
 
-Bar plot after sampling.png
+![Bar plot of class distribution after resampling](Images/Bar%20plot%20after%20sampling.png)
 
 ### **`5. SPLITTING DATA INTO TRAINING AND TESTING`**
 
@@ -130,13 +123,43 @@ For each model, I have:
 2.	Plotted Confusion Matrix and ROC Curve to determine outcomes
 
 #### **`1.   Random Forest Modeling`**
+
+![RF_Training Results v/s Testing Results](Images/RF_Training%20Results%20v%3As%20Testing%20Results.png)
+
+![Test Confusion Matrix for Random Forest](Images/Test%20Confusion%20Matrix%20for%20Random%20Forest.png)
+
+![ROC Curve for Random Forest](Images/ROC%20Curve%20for%20Random%20Forest.png)
+
+
 #### **`2.   Logistic Regression Modeling`**
+
+![LR_Training Results v/s Testing Results](Images/-R_Training%20Results%20v%3As%20Testing%20Results.png)
+
+![Test Confusion Matrix for Logistic Regression](Images/Test%20Confusion%20Matrix%20for%20Logistic%20Regression.png)
+
+![ROC Curve for Logistic Regression](Images/ROC%20Curve%20for%20Logistic%20Regression.png)
+
+
 #### **`3.   XGBoost`**
+
+![XGB_Training Results v/s Testing Results](Images/XGB_Training%20Results%20v%3As%20Testing%20Results.png)
+
+![Test Confusion Matrix for XGBoost](Images/Test%20Confusion%20Matrix%20for%20XGBoost.png)
+
+![ROC Curve for XGBoost](Images/ROC%20Curve%20for%20XGBoost.png)
+
+
 #### **`4.   Multi-Layer Perceptron`**
+
+![MLP_Training Results v/s Testing Results](Images/MLP_Training%20Results%20v%3As%20Testing%20Results.png)
+
+![Test Confusion Matrix for MLP](Images/Test%20Confusion%20Matrix%20for%20MLP.png)
+
+![ROC Curve for MLP](Images/ROC%20Curve%20for%20MLP.png)
 
 ## **CONCLUSION**
 
-> In order to address the problem of data imbalance in the credit card fraud detection dataset, this research used three different models: Random Forest Classification, Logistic Regression, and XGBoost. The real values were under sampled to 3000 while the fraudulent values were oversampled to 3000 in order to balance the imbalance. Then, a 70:30 split between the training and test sets was applied to the dataset.
+> In order to address the problem of data imbalance in the credit card fraud detection dataset, this research used four different models: Random Forest Classification, Logistic Regression, XGBoost, and Multi-Layer perceptron. The real values were under sampled to 3000 while the fraudulent values were oversampled to 3000 in order to balance the imbalance. Then, a 70:30 split between the training and test sets was applied to the dataset.
 
 > The models were trained on the training set, and the accuracy of their predictions on the testing set was used to gauge their performance. When compared to the Logistic Regression model, which performed well in terms of accuracy, precision, and how it appeared on the Confusion Matrix and ROC Curves, the Random Forest Classifier and XGBoost models showed overfitting.
 
